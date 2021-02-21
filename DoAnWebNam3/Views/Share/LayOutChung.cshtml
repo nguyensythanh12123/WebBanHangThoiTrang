@@ -1,0 +1,170 @@
+﻿@{
+    Layout = null;
+}
+@using DoAnWebNam3.Models;
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>LayOutChung</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css" integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous"/>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js" integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link href="~/CSS/Style1.css" rel="stylesheet" />
+</head>
+<body>
+    <div id="main">
+        <div class="header-top">
+            <div class="logo">
+                <ul>
+                    <li><a href="@Url.Action("Index","ThoiTrang")"><img src="~/Image/logo4.jpg" /></a></li>
+                    <li style="padding-top:54px;padding-right:100px;">
+                        <form action="/ThoiTrang/Search" method="post">
+                        <div class="container-1">
+                          <span class="icon"><i class="fa fa-search"></i></span>
+                          <input type="search" id="search" name="txtsearch" placeholder="Search..." />
+                      </div>
+                        </form>
+                    </li>               
+                    <li style="padding-top:47px;padding-right:50px;">
+                        <a href="@Url.Action("XemGioHang","DatHang")"> <i class="fa fa-cart-plus fa-3x" title="Giỏ Hàng"></i>
+                             @Html.Action("KhoiTaoLayout","ThoiTrang")
+                        </a>
+
+                    </li>                    
+                    <li style="padding-top:47px;padding-right:50px;">
+                        <a href="#"> 
+                            <i class="fa fa-user-circle fa-3x"></i>                                            
+                        </a>
+                    </li>                    
+                    <li style="padding-top:47px;">
+                        <a href="@Url.Action("DangXuat","KhachHang")"> 
+                                <i class="fa fa-sign-out fa-3x" title="Đăng Xuất"></i>                                          
+                        </a>
+                    </li>
+                     <li style="padding-top:47px;">
+                        <a href="@Url.Action("ChiTietGiaoDich","DatHang")"> 
+                                <i class="fa fa-info-circle fa-3x" title="Chi Tiết"></i>                                          
+                        </a>
+                    </li>
+                </ul>
+            </div>     
+        </div>
+       <nav class="site-header sticky-top">         
+            <div class="menu container-fuild bg-dark">
+                <ul>
+                    <li>
+                        <a href="@Url.Action("Index","ThoiTrang")"><i class=" fa fa-home fa-2x"></i></a>
+                    </li>
+                    <li>              
+                        <a href="@Url.Action("ThoiTrangNam","ThoiTrang")">Thời Trang Nam</a>
+                        <ul>
+                            <li><a href="#">Áo Nam</a>
+                                <ul>
+                                    <li><a href="#">Áo Khoác Nam</a></li>
+                                    <li><a href="#">Áo Sơ Mi Nam</a></li>
+                                    <li><a href="#">Áo Thun Nam</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#">Quần Nam</a>
+                                <ul>
+                                    <li><a href="#">Quần Tây</a></li>
+                                    <li><a href="#">Quần Jean</a></li>
+                                    <li><a href="#">Quần Short</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="@Url.Action("ThoiTrangNu","ThoiTrang")">Thời Trang Nữ</a>
+                        <ul>
+                            <li><a href="#">Áo Nữ</a>
+                                <ul>
+                                    <li><a href="#">Áo Khoác Nữ</a></li>
+                                    <li><a href="#">Áo croptop</a></li>
+                                    <li><a href="#">Áo Thun </a></li>
+                                </ul>
+                            </li>                          
+                            <li><a href="#">Váy</a>
+                                <ul>
+                                    <li><a href="#">Váy dạ hội</a></li>
+                                    <li><a href="#">Váy Masi</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li><a href="#">Thời trang Baby</a>
+                        <ul>
+                            <li><a href="@Url.Action("ThoiTrangBT","ThoiTrang")">Bé Trai</a></li>
+                            <li><a href="@Url.Action("ThoiTrangBG","ThoiTrang")">Bé Gái</a></li>                           
+                        </ul>
+                    </li>
+                    <li><a href="#">Sale OFF</a>
+                        <ul>
+                            <li><a href="#">Thời Trang Nam</a></li>
+                             <li><a href="#">Thời Trang Nữ</a></li>
+                            <li><a href="#">Thời Trang Baby</a></li>
+                        </ul>
+                    </li>
+                     <li>
+                         <a href="@Url.Action("DangNhap","KhachHang")" >ĐĂNG NHẬP</a>
+                     </li>                           
+                </ul>
+
+            </div>
+        </nav>       
+        <div id="containt">
+            @RenderBody()
+        </div>
+        <footer class="container py-5 bg-dark">
+      <div class="row">
+        <div class="col-12 col-md">
+          @*<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="d-block mb-2"><circle cx="12" cy="12" r="10"></circle><line x1="14.31" y1="8" x2="20.05" y2="17.94"></line><line x1="9.69" y1="8" x2="21.17" y2="8"></line><line x1="7.38" y1="12" x2="13.12" y2="2.06"></line><line x1="9.69" y1="16" x2="3.95" y2="6.06"></line><line x1="14.31" y1="16" x2="2.83" y2="16"></line><line x1="16.62" y1="12" x2="10.88" y2="21.94"></line></svg>
+          <small class="d-block mb-3 text-muted">© 2017-2018</small>*@
+            <img src="~/Image/logo4.jpg" width="150px" height="100px" />
+        </div>
+        <div class="col-6 col-md">
+          <h5 class="text-light">Chính sách chung</h5>
+          <ul class="list-unstyled text-small">
+            <li><a class="text-light" href="#">Chính sách giao nhận</a></li>
+            <li><a class="text-light" href="#">Chính sách bảo hành</a></li>
+              <li><a class="text-light" href="#">Chính sách đổi trả</a></li>
+            <li><a class="text-light" href="#">Phương thức thanh toán</a></li>
+            <li><a class="text-light" href="#">Thông tin ngân hàng</a></li>            
+          </ul>
+        </div>
+        <div class="col-6 col-md">
+          <h5 class="text-light">Hướng dẫn</h5>
+          <ul class="list-unstyled text-small">
+            <li><a class="text-light" href="#">Hướng dẫn mua hàng</a></li>
+            <li><a class="text-light" href="#">Chính sách bảo mật</a></li>
+            <li><a class="text-light" href="#">Bảng do giày</a></li>
+          </ul>
+        </div>
+        <div class="col-6 col-md">
+          <h5 class="text-light">Thông tin về shop</h5>
+          <ul class="list-unstyled text-small">
+            <li><a class="text-light" href="#">Giới thiệu</a></li>
+            <li><a class="text-light" href="#">Liên hệ</a></li>
+            <li><a class="text-light" href="#">Thông tin thời trang</a></li>
+            <li><a class="text-light" href="#">Cơ hội làm việc</a></li>
+          </ul>
+        </div>
+        <div class="col-6 col-md">
+          <h5 class="text-light">Hệ thống cửa hàng</h5>
+          <ul class="list-unstyled text-small">
+            <li><a class="text-light" href="#">TP Hồ Chí Minh</a></li>
+            <li><a class="text-light" href="#">Hà Nội</a></li>
+            <li><a class="text-light" href="#">Nha Trang</a></li>
+            <li><a class="text-light" href="#">Đà Nẳng</a></li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+    </div>
+ 
+</body>
+</html>
+

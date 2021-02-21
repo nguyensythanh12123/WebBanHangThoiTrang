@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="2e92422c1cb449f2ab9d8be8097f0963" Name="Diagram1">
+        <EntityTypeShape EntityType="DAWEBTHOITRANGModel.ChiTietHD" Width="1.5" PointX="5.25" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DAWEBTHOITRANGModel.HoaDon" Width="1.5" PointX="3" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DAWEBTHOITRANGModel.KhachHang" Width="1.5" PointX="0.75" PointY="9.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DAWEBTHOITRANGModel.LoaiSP" Width="1.5" PointX="0.75" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="DAWEBTHOITRANGModel.NhaCungCap" Width="1.5" PointX="0.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DAWEBTHOITRANGModel.SanPham" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <AssociationConnector Association="DAWEBTHOITRANGModel.FK_ChiTietHD_HoaDon" ManuallyRouted="false" />
+        <AssociationConnector Association="DAWEBTHOITRANGModel.FK_ChiTietHD_SanPham" ManuallyRouted="false" />
+        <AssociationConnector Association="DAWEBTHOITRANGModel.FK_HoaDon_KhachHang" ManuallyRouted="false" />
+        <AssociationConnector Association="DAWEBTHOITRANGModel.FK_SanPham_LoaiSP" ManuallyRouted="false" />
+        <AssociationConnector Association="DAWEBTHOITRANGModel.FK_SanPham_NhaCungCap" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

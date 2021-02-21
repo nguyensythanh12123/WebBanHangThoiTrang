@@ -1,0 +1,16 @@
+﻿
+@using DoAnWebNam3.Models;
+
+@model List<NhaCungCap>
+
+
+<ul class="list-group list-group-flush text-left">
+ <li class="list-group-item" style="background-color:#060303"><a href="#" style="text-transform:uppercase; text-decoration:none; color:white; font-weight:bold">Nhà Cung Cấp</a></li>
+    @foreach (NhaCungCap loai in Model)
+    {
+        <li class="list-group-item">
+
+            @Html.ActionLink("Nhà cung cấp "+ @loai.TenNCC, "HienThiTheoNCC", "Admin", new {mncc = @loai.MaNCC}, new {@style="text-transform: uppercase; text-decoration: none; color:black; font-size: 14px "})
+        </li>
+    }
+    </ul>

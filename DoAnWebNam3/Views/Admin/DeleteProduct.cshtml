@@ -1,0 +1,82 @@
+﻿@model DoAnWebNam3.Models.SanPham
+
+@{
+    ViewBag.Title = "DeleteProduct";
+    Layout = "~/Views/Share/_LayoutAdmin.cshtml";
+    <link href="~/CSS/Style1.css" rel="stylesheet" />
+}
+
+<h2>XÓA MỘT SẢN PHẨM</h2>
+
+<div class="card border-dark">
+    <table class="border-dark mx-3 mb-3 mt-3">
+        <tr class="text-left">
+            <td width="30%">               
+                 <div class="picture">
+                   <div class="anhnen" >
+                                <img src="~/Image/@Model.Anh" class="d-block w-75" alt="ảnh 1" />
+                            </div>
+                            <div class="anhchitiet">
+                            @foreach(string s in @Model.AnhCT.ToString().Split(','))
+                            {                                
+                                    <img src="~/Image/@s.TrimStart()" class="d-block w-25" alt="ảnh 2" style="float:left"/>
+                            }
+                            
+                        </div>                        
+                    </div>
+            </td>
+            
+                <td style="font-size:22px;">
+                    <table>
+                        <tr>
+                            <td colspan="2"><h2 style="color:red">
+                            @Html.DisplayFor(model => model.TenSP)</h2>
+                                </td>
+                        </tr>
+                        <tr>
+                            <td style="width:25%"><b>Mã Sản Phẩm:</b></td>
+                            <td style="width:75%">@Html.DisplayFor(model => model.MaSP)</td>
+                        </tr>
+                         <tr>
+                            <td><b>Giá:</b></td>
+                            <td>@Html.DisplayFor(model => model.GiaBan) vnđ </td>
+                        </tr>
+                        <tr>
+                            <td><b>Giảm giá:</b></td>
+                            <td>@Html.DisplayFor(model => model.GiamGia) vnđ </td>
+                        </tr>
+                        <tr>
+
+                        <td><b>Mô tả:</b></td>
+                            <td>
+                    @foreach (string s in Model.MoTa.ToString().Split('-'))
+                        {
+                            <li>@s.TrimEnd()</li>
+                        }</td>
+                            </tr>
+                     <tr>
+                        <td><b>Mã nhà cung cấp:</b></td>
+                        <td>@Html.DisplayFor(model => model.MaNCC)</td>                    
+                     </tr>
+                <tr>
+                        <td><b>Mã loại:</b></td>
+                        <td>@Html.DisplayFor(model => model.MaLoai)</td>                    
+                    </tr>
+                    <tr>
+                        <td><b>Size:</b></td>
+                        <td>@Html.DisplayFor(model => model.Size)</td>                    
+                    </tr>
+            </table>
+                </td>
+             </tr>
+        </table>
+        </div>
+<br />
+<h3>Bạn có chắc muốn xóa sản phẩm này không?</h3>
+
+@using (Html.BeginForm()) {
+    <p>
+        <input type="submit" value="Delete" class="btn btn-danger"/> |
+        @Html.ActionLink("Back to List", "ShowSanPham", "", new { @class = "btn btn-primary" })
+    </p>
+}

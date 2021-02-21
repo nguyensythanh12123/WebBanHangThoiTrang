@@ -1,0 +1,419 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="DAWEBTHOITRANGModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="DAWEBTHOITRANGModelStoreContainer">
+          <EntitySet Name="ChiTietHD" EntityType="DAWEBTHOITRANGModel.Store.ChiTietHD" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="HoaDon" EntityType="DAWEBTHOITRANGModel.Store.HoaDon" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="KhachHang" EntityType="DAWEBTHOITRANGModel.Store.KhachHang" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="LoaiSP" EntityType="DAWEBTHOITRANGModel.Store.LoaiSP" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="NhaCungCap" EntityType="DAWEBTHOITRANGModel.Store.NhaCungCap" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="SanPham" EntityType="DAWEBTHOITRANGModel.Store.SanPham" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_ChiTietHD_HoaDon" Association="DAWEBTHOITRANGModel.Store.FK_ChiTietHD_HoaDon">
+            <End Role="HoaDon" EntitySet="HoaDon" />
+            <End Role="ChiTietHD" EntitySet="ChiTietHD" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ChiTietHD_SanPham" Association="DAWEBTHOITRANGModel.Store.FK_ChiTietHD_SanPham">
+            <End Role="SanPham" EntitySet="SanPham" />
+            <End Role="ChiTietHD" EntitySet="ChiTietHD" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HoaDon_KhachHang" Association="DAWEBTHOITRANGModel.Store.FK_HoaDon_KhachHang">
+            <End Role="KhachHang" EntitySet="KhachHang" />
+            <End Role="HoaDon" EntitySet="HoaDon" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SanPham_LoaiSP" Association="DAWEBTHOITRANGModel.Store.FK_SanPham_LoaiSP">
+            <End Role="LoaiSP" EntitySet="LoaiSP" />
+            <End Role="SanPham" EntitySet="SanPham" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SanPham_NhaCungCap" Association="DAWEBTHOITRANGModel.Store.FK_SanPham_NhaCungCap">
+            <End Role="NhaCungCap" EntitySet="NhaCungCap" />
+            <End Role="SanPham" EntitySet="SanPham" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="ChiTietHD">
+          <Key>
+            <PropertyRef Name="MaCTHD" />
+          </Key>
+          <Property Name="MaCTHD" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="MaHD" Type="int" />
+          <Property Name="MaSP" Type="char" MaxLength="5" />
+          <Property Name="SoLuong" Type="int" />
+        </EntityType>
+        <EntityType Name="HoaDon">
+          <Key>
+            <PropertyRef Name="MaHD" />
+          </Key>
+          <Property Name="MaHD" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="MaKH" Type="int" />
+          <Property Name="NgayLap" Type="datetime" />
+          <Property Name="GhiChu" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="KhachHang">
+          <Key>
+            <PropertyRef Name="MaKH" />
+          </Key>
+          <Property Name="MaKH" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="TenKH" Type="nvarchar" MaxLength="50" />
+          <Property Name="NgaySinh" Type="date" />
+          <Property Name="SDT" Type="char" MaxLength="10" />
+          <Property Name="DiaChi" Type="nvarchar" MaxLength="255" />
+          <Property Name="Email" Type="varchar" MaxLength="50" />
+          <Property Name="TenDN" Type="varchar" MaxLength="50" />
+          <Property Name="Pass" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="LoaiSP">
+          <Key>
+            <PropertyRef Name="MaLoai" />
+          </Key>
+          <Property Name="MaLoai" Type="char" Nullable="false" MaxLength="2" />
+          <Property Name="TenLoai" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="NhaCungCap">
+          <Key>
+            <PropertyRef Name="MaNCC" />
+          </Key>
+          <Property Name="MaNCC" Type="char" Nullable="false" MaxLength="5" />
+          <Property Name="TenNCC" Type="nvarchar" MaxLength="255" />
+          <Property Name="DiaChi" Type="nvarchar" MaxLength="255" />
+          <Property Name="SDT" Type="char" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="SanPham">
+          <Key>
+            <PropertyRef Name="MaSP" />
+          </Key>
+          <Property Name="MaSP" Type="char" Nullable="false" MaxLength="5" />
+          <Property Name="TenSP" Type="nvarchar" MaxLength="255" />
+          <Property Name="GiaBan" Type="float" />
+          <Property Name="GiamGia" Type="float" />
+          <Property Name="MoTa" Type="nvarchar(max)" />
+          <Property Name="MaNCC" Type="char" MaxLength="5" />
+          <Property Name="MaLoai" Type="char" MaxLength="2" />
+          <Property Name="Anh" Type="nvarchar(max)" />
+          <Property Name="AnhCT" Type="nvarchar(max)" />
+          <Property Name="Size" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_ChiTietHD_HoaDon">
+          <End Role="HoaDon" Type="DAWEBTHOITRANGModel.Store.HoaDon" Multiplicity="0..1" />
+          <End Role="ChiTietHD" Type="DAWEBTHOITRANGModel.Store.ChiTietHD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HoaDon">
+              <PropertyRef Name="MaHD" />
+            </Principal>
+            <Dependent Role="ChiTietHD">
+              <PropertyRef Name="MaHD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ChiTietHD_SanPham">
+          <End Role="SanPham" Type="DAWEBTHOITRANGModel.Store.SanPham" Multiplicity="0..1" />
+          <End Role="ChiTietHD" Type="DAWEBTHOITRANGModel.Store.ChiTietHD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SanPham">
+              <PropertyRef Name="MaSP" />
+            </Principal>
+            <Dependent Role="ChiTietHD">
+              <PropertyRef Name="MaSP" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HoaDon_KhachHang">
+          <End Role="KhachHang" Type="DAWEBTHOITRANGModel.Store.KhachHang" Multiplicity="0..1" />
+          <End Role="HoaDon" Type="DAWEBTHOITRANGModel.Store.HoaDon" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KhachHang">
+              <PropertyRef Name="MaKH" />
+            </Principal>
+            <Dependent Role="HoaDon">
+              <PropertyRef Name="MaKH" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SanPham_LoaiSP">
+          <End Role="LoaiSP" Type="DAWEBTHOITRANGModel.Store.LoaiSP" Multiplicity="0..1" />
+          <End Role="SanPham" Type="DAWEBTHOITRANGModel.Store.SanPham" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LoaiSP">
+              <PropertyRef Name="MaLoai" />
+            </Principal>
+            <Dependent Role="SanPham">
+              <PropertyRef Name="MaLoai" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SanPham_NhaCungCap">
+          <End Role="NhaCungCap" Type="DAWEBTHOITRANGModel.Store.NhaCungCap" Multiplicity="0..1" />
+          <End Role="SanPham" Type="DAWEBTHOITRANGModel.Store.SanPham" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NhaCungCap">
+              <PropertyRef Name="MaNCC" />
+            </Principal>
+            <Dependent Role="SanPham">
+              <PropertyRef Name="MaNCC" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DAWEBTHOITRANGModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="DAWEBTHOITRANGEntities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="ChiTietHDs" EntityType="DAWEBTHOITRANGModel.ChiTietHD" />
+          <EntitySet Name="HoaDons" EntityType="DAWEBTHOITRANGModel.HoaDon" />
+          <EntitySet Name="KhachHangs" EntityType="DAWEBTHOITRANGModel.KhachHang" />
+          <EntitySet Name="LoaiSPs" EntityType="DAWEBTHOITRANGModel.LoaiSP" />
+          <EntitySet Name="NhaCungCaps" EntityType="DAWEBTHOITRANGModel.NhaCungCap" />
+          <EntitySet Name="SanPhams" EntityType="DAWEBTHOITRANGModel.SanPham" />
+          <AssociationSet Name="FK_ChiTietHD_HoaDon" Association="DAWEBTHOITRANGModel.FK_ChiTietHD_HoaDon">
+            <End Role="HoaDon" EntitySet="HoaDons" />
+            <End Role="ChiTietHD" EntitySet="ChiTietHDs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ChiTietHD_SanPham" Association="DAWEBTHOITRANGModel.FK_ChiTietHD_SanPham">
+            <End Role="SanPham" EntitySet="SanPhams" />
+            <End Role="ChiTietHD" EntitySet="ChiTietHDs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HoaDon_KhachHang" Association="DAWEBTHOITRANGModel.FK_HoaDon_KhachHang">
+            <End Role="KhachHang" EntitySet="KhachHangs" />
+            <End Role="HoaDon" EntitySet="HoaDons" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SanPham_LoaiSP" Association="DAWEBTHOITRANGModel.FK_SanPham_LoaiSP">
+            <End Role="LoaiSP" EntitySet="LoaiSPs" />
+            <End Role="SanPham" EntitySet="SanPhams" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SanPham_NhaCungCap" Association="DAWEBTHOITRANGModel.FK_SanPham_NhaCungCap">
+            <End Role="NhaCungCap" EntitySet="NhaCungCaps" />
+            <End Role="SanPham" EntitySet="SanPhams" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="ChiTietHD">
+          <Key>
+            <PropertyRef Name="MaCTHD" />
+          </Key>
+          <Property Name="MaCTHD" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="MaHD" Type="Int32" />
+          <Property Name="MaSP" Type="String" MaxLength="5" Unicode="false" FixedLength="true" />
+          <Property Name="SoLuong" Type="Int32" />
+          <NavigationProperty Name="HoaDon" Relationship="DAWEBTHOITRANGModel.FK_ChiTietHD_HoaDon" FromRole="ChiTietHD" ToRole="HoaDon" />
+          <NavigationProperty Name="SanPham" Relationship="DAWEBTHOITRANGModel.FK_ChiTietHD_SanPham" FromRole="ChiTietHD" ToRole="SanPham" />
+        </EntityType>
+        <EntityType Name="HoaDon">
+          <Key>
+            <PropertyRef Name="MaHD" />
+          </Key>
+          <Property Name="MaHD" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="MaKH" Type="Int32" />
+          <Property Name="NgayLap" Type="DateTime" Precision="3" />
+          <Property Name="GhiChu" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="ChiTietHDs" Relationship="DAWEBTHOITRANGModel.FK_ChiTietHD_HoaDon" FromRole="HoaDon" ToRole="ChiTietHD" />
+          <NavigationProperty Name="KhachHang" Relationship="DAWEBTHOITRANGModel.FK_HoaDon_KhachHang" FromRole="HoaDon" ToRole="KhachHang" />
+        </EntityType>
+        <EntityType Name="KhachHang">
+          <Key>
+            <PropertyRef Name="MaKH" />
+          </Key>
+          <Property Name="MaKH" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="TenKH" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="NgaySinh" Type="DateTime" Precision="0" />
+          <Property Name="SDT" Type="String" MaxLength="10" Unicode="false" FixedLength="true" />
+          <Property Name="DiaChi" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="Email" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="TenDN" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Pass" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="HoaDons" Relationship="DAWEBTHOITRANGModel.FK_HoaDon_KhachHang" FromRole="KhachHang" ToRole="HoaDon" />
+        </EntityType>
+        <EntityType Name="LoaiSP">
+          <Key>
+            <PropertyRef Name="MaLoai" />
+          </Key>
+          <Property Name="MaLoai" Type="String" Nullable="false" MaxLength="2" Unicode="false" FixedLength="true" />
+          <Property Name="TenLoai" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="SanPhams" Relationship="DAWEBTHOITRANGModel.FK_SanPham_LoaiSP" FromRole="LoaiSP" ToRole="SanPham" />
+        </EntityType>
+        <EntityType Name="NhaCungCap">
+          <Key>
+            <PropertyRef Name="MaNCC" />
+          </Key>
+          <Property Name="MaNCC" Type="String" Nullable="false" MaxLength="5" Unicode="false" FixedLength="true" />
+          <Property Name="TenNCC" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="DiaChi" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="SDT" Type="String" MaxLength="10" Unicode="false" FixedLength="true" />
+          <NavigationProperty Name="SanPhams" Relationship="DAWEBTHOITRANGModel.FK_SanPham_NhaCungCap" FromRole="NhaCungCap" ToRole="SanPham" />
+        </EntityType>
+        <EntityType Name="SanPham">
+          <Key>
+            <PropertyRef Name="MaSP" />
+          </Key>
+          <Property Name="MaSP" Type="String" Nullable="false" MaxLength="5" Unicode="false" FixedLength="true" />
+          <Property Name="TenSP" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="GiaBan" Type="Double" />
+          <Property Name="GiamGia" Type="Double" />
+          <Property Name="MoTa" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="MaNCC" Type="String" MaxLength="5" Unicode="false" FixedLength="true" />
+          <Property Name="MaLoai" Type="String" MaxLength="2" Unicode="false" FixedLength="true" />
+          <Property Name="Anh" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="AnhCT" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Size" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="ChiTietHDs" Relationship="DAWEBTHOITRANGModel.FK_ChiTietHD_SanPham" FromRole="SanPham" ToRole="ChiTietHD" />
+          <NavigationProperty Name="LoaiSP" Relationship="DAWEBTHOITRANGModel.FK_SanPham_LoaiSP" FromRole="SanPham" ToRole="LoaiSP" />
+          <NavigationProperty Name="NhaCungCap" Relationship="DAWEBTHOITRANGModel.FK_SanPham_NhaCungCap" FromRole="SanPham" ToRole="NhaCungCap" />
+        </EntityType>
+        <Association Name="FK_ChiTietHD_HoaDon">
+          <End Role="HoaDon" Type="DAWEBTHOITRANGModel.HoaDon" Multiplicity="0..1" />
+          <End Role="ChiTietHD" Type="DAWEBTHOITRANGModel.ChiTietHD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HoaDon">
+              <PropertyRef Name="MaHD" />
+            </Principal>
+            <Dependent Role="ChiTietHD">
+              <PropertyRef Name="MaHD" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ChiTietHD_SanPham">
+          <End Role="SanPham" Type="DAWEBTHOITRANGModel.SanPham" Multiplicity="0..1" />
+          <End Role="ChiTietHD" Type="DAWEBTHOITRANGModel.ChiTietHD" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SanPham">
+              <PropertyRef Name="MaSP" />
+            </Principal>
+            <Dependent Role="ChiTietHD">
+              <PropertyRef Name="MaSP" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_HoaDon_KhachHang">
+          <End Role="KhachHang" Type="DAWEBTHOITRANGModel.KhachHang" Multiplicity="0..1" />
+          <End Role="HoaDon" Type="DAWEBTHOITRANGModel.HoaDon" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="KhachHang">
+              <PropertyRef Name="MaKH" />
+            </Principal>
+            <Dependent Role="HoaDon">
+              <PropertyRef Name="MaKH" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SanPham_LoaiSP">
+          <End Role="LoaiSP" Type="DAWEBTHOITRANGModel.LoaiSP" Multiplicity="0..1" />
+          <End Role="SanPham" Type="DAWEBTHOITRANGModel.SanPham" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LoaiSP">
+              <PropertyRef Name="MaLoai" />
+            </Principal>
+            <Dependent Role="SanPham">
+              <PropertyRef Name="MaLoai" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SanPham_NhaCungCap">
+          <End Role="NhaCungCap" Type="DAWEBTHOITRANGModel.NhaCungCap" Multiplicity="0..1" />
+          <End Role="SanPham" Type="DAWEBTHOITRANGModel.SanPham" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NhaCungCap">
+              <PropertyRef Name="MaNCC" />
+            </Principal>
+            <Dependent Role="SanPham">
+              <PropertyRef Name="MaNCC" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DAWEBTHOITRANGModelStoreContainer" CdmEntityContainer="DAWEBTHOITRANGEntities">
+          <EntitySetMapping Name="ChiTietHDs">
+            <EntityTypeMapping TypeName="DAWEBTHOITRANGModel.ChiTietHD">
+              <MappingFragment StoreEntitySet="ChiTietHD">
+                <ScalarProperty Name="MaCTHD" ColumnName="MaCTHD" />
+                <ScalarProperty Name="MaHD" ColumnName="MaHD" />
+                <ScalarProperty Name="MaSP" ColumnName="MaSP" />
+                <ScalarProperty Name="SoLuong" ColumnName="SoLuong" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HoaDons">
+            <EntityTypeMapping TypeName="DAWEBTHOITRANGModel.HoaDon">
+              <MappingFragment StoreEntitySet="HoaDon">
+                <ScalarProperty Name="MaHD" ColumnName="MaHD" />
+                <ScalarProperty Name="MaKH" ColumnName="MaKH" />
+                <ScalarProperty Name="NgayLap" ColumnName="NgayLap" />
+                <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="KhachHangs">
+            <EntityTypeMapping TypeName="DAWEBTHOITRANGModel.KhachHang">
+              <MappingFragment StoreEntitySet="KhachHang">
+                <ScalarProperty Name="MaKH" ColumnName="MaKH" />
+                <ScalarProperty Name="TenKH" ColumnName="TenKH" />
+                <ScalarProperty Name="NgaySinh" ColumnName="NgaySinh" />
+                <ScalarProperty Name="SDT" ColumnName="SDT" />
+                <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="TenDN" ColumnName="TenDN" />
+                <ScalarProperty Name="Pass" ColumnName="Pass" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LoaiSPs">
+            <EntityTypeMapping TypeName="DAWEBTHOITRANGModel.LoaiSP">
+              <MappingFragment StoreEntitySet="LoaiSP">
+                <ScalarProperty Name="MaLoai" ColumnName="MaLoai" />
+                <ScalarProperty Name="TenLoai" ColumnName="TenLoai" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NhaCungCaps">
+            <EntityTypeMapping TypeName="DAWEBTHOITRANGModel.NhaCungCap">
+              <MappingFragment StoreEntitySet="NhaCungCap">
+                <ScalarProperty Name="MaNCC" ColumnName="MaNCC" />
+                <ScalarProperty Name="TenNCC" ColumnName="TenNCC" />
+                <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
+                <ScalarProperty Name="SDT" ColumnName="SDT" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SanPhams">
+            <EntityTypeMapping TypeName="DAWEBTHOITRANGModel.SanPham">
+              <MappingFragment StoreEntitySet="SanPham">
+                <ScalarProperty Name="MaSP" ColumnName="MaSP" />
+                <ScalarProperty Name="TenSP" ColumnName="TenSP" />
+                <ScalarProperty Name="GiaBan" ColumnName="GiaBan" />
+                <ScalarProperty Name="GiamGia" ColumnName="GiamGia" />
+                <ScalarProperty Name="MoTa" ColumnName="MoTa" />
+                <ScalarProperty Name="MaNCC" ColumnName="MaNCC" />
+                <ScalarProperty Name="MaLoai" ColumnName="MaLoai" />
+                <ScalarProperty Name="Anh" ColumnName="Anh" />
+                <ScalarProperty Name="AnhCT" ColumnName="AnhCT" />
+                <ScalarProperty Name="Size" ColumnName="Size" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

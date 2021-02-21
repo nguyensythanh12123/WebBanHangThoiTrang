@@ -1,0 +1,81 @@
+﻿@model IEnumerable<DoAnWebNam3.Models.SanPham>
+
+@{
+    ViewBag.Title = "ShowSanPham";
+    Layout = "~/Views/Share/_LayoutAdmin.cshtml";
+    <link href="~/CSS/Style1.css" rel="stylesheet" />
+}
+
+<h3 style="text-align: center">DANH SÁCH SẢN PHẨM</h3>
+
+<p>
+    @Html.ActionLink("Create New", "CreateProduct")
+</p>
+<table class="table table-bordered" style="width:100%">
+    <tr>
+        <th width="10%" style="text-align:center">
+            Tên Sản Phẩm
+        </th>
+        <th style="text-align:center; width:8%">
+            Giá Bán
+        </th>
+        <th style="text-align:center; width:8%">
+            Giảm Giá
+        </th>
+        <th width="18%" style="text-align:center">
+            Mô Tả
+        </th>
+        <th style="text-align:center; width:14%" >
+            Mã Nhà Cung Cấp
+        </th>
+        <th style="text-align:center; width:7%">
+            Mã Loại
+        </th>
+        <th width ="12%" style="text-align:center">
+            Ảnh
+        </th>
+        <th style="text-align:center">
+            Size
+        </th>
+        <th style="text-align:center">
+            @Html.ActionLink("Delete All","Delete All", "Admin")
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.TenSP)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GiaBan)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GiamGia)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MoTa)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MaNCC)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MaLoai)
+        </td>
+        <td style="text-align:center">
+            @*@Html.DisplayFor(modelItem => item.Anh)*@
+            <img src="~/Image/@Html.DisplayFor(modelItem => item.Anh)" class="w-50 rounded" />
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Size)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "UpdateProduct", new { msp=item.MaSP }) |
+            @Html.ActionLink("Details", "Details", new { msp =item.MaSP }) |
+            @Html.ActionLink("Delete", "DeleteProduct", new { msp=item.MaSP })
+        </td>
+    </tr>
+}
+
+</table>
+<h2>Có tất cả  @ViewBag.tbsl sản phẩm</h2>

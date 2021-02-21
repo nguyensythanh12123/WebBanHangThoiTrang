@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="doanwebthoitrang">
+  <DataContextMoniker Name="/doanwebthoitrangDataContext" />
+  <nestedChildShapes>
+    <classShape Id="a1fec98a-883c-45af-ab61-ffe55d06a29a" absoluteBounds="1.75, 1.75, 2, 2.7324039713541666">
+      <DataClassMoniker Name="/doanwebthoitrangDataContext/SanPham" />
+      <nestedChildShapes>
+        <elementListCompartment Id="1c716567-c1a4-4239-a18e-80fa13599866" absoluteBounds="1.7650000000000001, 2.21, 1.9700000000000002, 2.1724039713541665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

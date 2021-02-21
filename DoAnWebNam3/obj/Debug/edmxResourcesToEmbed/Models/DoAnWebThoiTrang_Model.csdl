@@ -1,0 +1,163 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DAWEBTHOITRANGModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="DAWEBTHOITRANGEntities" p1:LazyLoadingEnabled="true">
+    <EntitySet Name="ChiTietHDs" EntityType="DAWEBTHOITRANGModel.ChiTietHD" />
+    <EntitySet Name="HoaDons" EntityType="DAWEBTHOITRANGModel.HoaDon" />
+    <EntitySet Name="KhachHangs" EntityType="DAWEBTHOITRANGModel.KhachHang" />
+    <EntitySet Name="LoaiSPs" EntityType="DAWEBTHOITRANGModel.LoaiSP" />
+    <EntitySet Name="NhaCungCaps" EntityType="DAWEBTHOITRANGModel.NhaCungCap" />
+    <EntitySet Name="SanPhams" EntityType="DAWEBTHOITRANGModel.SanPham" />
+    <AssociationSet Name="FK_ChiTietHD_HoaDon" Association="DAWEBTHOITRANGModel.FK_ChiTietHD_HoaDon">
+      <End Role="HoaDon" EntitySet="HoaDons" />
+      <End Role="ChiTietHD" EntitySet="ChiTietHDs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ChiTietHD_SanPham" Association="DAWEBTHOITRANGModel.FK_ChiTietHD_SanPham">
+      <End Role="SanPham" EntitySet="SanPhams" />
+      <End Role="ChiTietHD" EntitySet="ChiTietHDs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_HoaDon_KhachHang" Association="DAWEBTHOITRANGModel.FK_HoaDon_KhachHang">
+      <End Role="KhachHang" EntitySet="KhachHangs" />
+      <End Role="HoaDon" EntitySet="HoaDons" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SanPham_LoaiSP" Association="DAWEBTHOITRANGModel.FK_SanPham_LoaiSP">
+      <End Role="LoaiSP" EntitySet="LoaiSPs" />
+      <End Role="SanPham" EntitySet="SanPhams" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SanPham_NhaCungCap" Association="DAWEBTHOITRANGModel.FK_SanPham_NhaCungCap">
+      <End Role="NhaCungCap" EntitySet="NhaCungCaps" />
+      <End Role="SanPham" EntitySet="SanPhams" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="ChiTietHD">
+    <Key>
+      <PropertyRef Name="MaCTHD" />
+    </Key>
+    <Property Name="MaCTHD" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="MaHD" Type="Int32" />
+    <Property Name="MaSP" Type="String" MaxLength="5" Unicode="false" FixedLength="true" />
+    <Property Name="SoLuong" Type="Int32" />
+    <NavigationProperty Name="HoaDon" Relationship="DAWEBTHOITRANGModel.FK_ChiTietHD_HoaDon" FromRole="ChiTietHD" ToRole="HoaDon" />
+    <NavigationProperty Name="SanPham" Relationship="DAWEBTHOITRANGModel.FK_ChiTietHD_SanPham" FromRole="ChiTietHD" ToRole="SanPham" />
+  </EntityType>
+  <EntityType Name="HoaDon">
+    <Key>
+      <PropertyRef Name="MaHD" />
+    </Key>
+    <Property Name="MaHD" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="MaKH" Type="Int32" />
+    <Property Name="NgayLap" Type="DateTime" Precision="3" />
+    <Property Name="GhiChu" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="ChiTietHDs" Relationship="DAWEBTHOITRANGModel.FK_ChiTietHD_HoaDon" FromRole="HoaDon" ToRole="ChiTietHD" />
+    <NavigationProperty Name="KhachHang" Relationship="DAWEBTHOITRANGModel.FK_HoaDon_KhachHang" FromRole="HoaDon" ToRole="KhachHang" />
+  </EntityType>
+  <EntityType Name="KhachHang">
+    <Key>
+      <PropertyRef Name="MaKH" />
+    </Key>
+    <Property Name="MaKH" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="TenKH" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <Property Name="NgaySinh" Type="DateTime" Precision="0" />
+    <Property Name="SDT" Type="String" MaxLength="10" Unicode="false" FixedLength="true" />
+    <Property Name="DiaChi" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="Email" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="TenDN" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="Pass" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <NavigationProperty Name="HoaDons" Relationship="DAWEBTHOITRANGModel.FK_HoaDon_KhachHang" FromRole="KhachHang" ToRole="HoaDon" />
+  </EntityType>
+  <EntityType Name="LoaiSP">
+    <Key>
+      <PropertyRef Name="MaLoai" />
+    </Key>
+    <Property Name="MaLoai" Type="String" Nullable="false" MaxLength="2" Unicode="false" FixedLength="true" />
+    <Property Name="TenLoai" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+    <NavigationProperty Name="SanPhams" Relationship="DAWEBTHOITRANGModel.FK_SanPham_LoaiSP" FromRole="LoaiSP" ToRole="SanPham" />
+  </EntityType>
+  <EntityType Name="NhaCungCap">
+    <Key>
+      <PropertyRef Name="MaNCC" />
+    </Key>
+    <Property Name="MaNCC" Type="String" Nullable="false" MaxLength="5" Unicode="false" FixedLength="true" />
+    <Property Name="TenNCC" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="DiaChi" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="SDT" Type="String" MaxLength="10" Unicode="false" FixedLength="true" />
+    <NavigationProperty Name="SanPhams" Relationship="DAWEBTHOITRANGModel.FK_SanPham_NhaCungCap" FromRole="NhaCungCap" ToRole="SanPham" />
+  </EntityType>
+  <EntityType Name="SanPham">
+    <Key>
+      <PropertyRef Name="MaSP" />
+    </Key>
+    <Property Name="MaSP" Type="String" Nullable="false" MaxLength="5" Unicode="false" FixedLength="true" />
+    <Property Name="TenSP" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+    <Property Name="GiaBan" Type="Double" />
+    <Property Name="GiamGia" Type="Double" />
+    <Property Name="MoTa" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="MaNCC" Type="String" MaxLength="5" Unicode="false" FixedLength="true" />
+    <Property Name="MaLoai" Type="String" MaxLength="2" Unicode="false" FixedLength="true" />
+    <Property Name="Anh" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="AnhCT" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+    <Property Name="Size" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+    <NavigationProperty Name="ChiTietHDs" Relationship="DAWEBTHOITRANGModel.FK_ChiTietHD_SanPham" FromRole="SanPham" ToRole="ChiTietHD" />
+    <NavigationProperty Name="LoaiSP" Relationship="DAWEBTHOITRANGModel.FK_SanPham_LoaiSP" FromRole="SanPham" ToRole="LoaiSP" />
+    <NavigationProperty Name="NhaCungCap" Relationship="DAWEBTHOITRANGModel.FK_SanPham_NhaCungCap" FromRole="SanPham" ToRole="NhaCungCap" />
+  </EntityType>
+  <Association Name="FK_ChiTietHD_HoaDon">
+    <End Role="HoaDon" Type="DAWEBTHOITRANGModel.HoaDon" Multiplicity="0..1" />
+    <End Role="ChiTietHD" Type="DAWEBTHOITRANGModel.ChiTietHD" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HoaDon">
+        <PropertyRef Name="MaHD" />
+      </Principal>
+      <Dependent Role="ChiTietHD">
+        <PropertyRef Name="MaHD" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ChiTietHD_SanPham">
+    <End Role="SanPham" Type="DAWEBTHOITRANGModel.SanPham" Multiplicity="0..1" />
+    <End Role="ChiTietHD" Type="DAWEBTHOITRANGModel.ChiTietHD" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SanPham">
+        <PropertyRef Name="MaSP" />
+      </Principal>
+      <Dependent Role="ChiTietHD">
+        <PropertyRef Name="MaSP" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_HoaDon_KhachHang">
+    <End Role="KhachHang" Type="DAWEBTHOITRANGModel.KhachHang" Multiplicity="0..1" />
+    <End Role="HoaDon" Type="DAWEBTHOITRANGModel.HoaDon" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="KhachHang">
+        <PropertyRef Name="MaKH" />
+      </Principal>
+      <Dependent Role="HoaDon">
+        <PropertyRef Name="MaKH" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SanPham_LoaiSP">
+    <End Role="LoaiSP" Type="DAWEBTHOITRANGModel.LoaiSP" Multiplicity="0..1" />
+    <End Role="SanPham" Type="DAWEBTHOITRANGModel.SanPham" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LoaiSP">
+        <PropertyRef Name="MaLoai" />
+      </Principal>
+      <Dependent Role="SanPham">
+        <PropertyRef Name="MaLoai" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SanPham_NhaCungCap">
+    <End Role="NhaCungCap" Type="DAWEBTHOITRANGModel.NhaCungCap" Multiplicity="0..1" />
+    <End Role="SanPham" Type="DAWEBTHOITRANGModel.SanPham" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NhaCungCap">
+        <PropertyRef Name="MaNCC" />
+      </Principal>
+      <Dependent Role="SanPham">
+        <PropertyRef Name="MaNCC" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

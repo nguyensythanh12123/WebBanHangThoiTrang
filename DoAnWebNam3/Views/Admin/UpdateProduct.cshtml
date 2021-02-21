@@ -1,0 +1,87 @@
+﻿@model DoAnWebNam3.Models.SanPham
+
+@{
+    ViewBag.Title = "UpdateProduct";
+    Layout = "~/Views/Share/_LayoutAdmin.cshtml";
+    <link href="~/CSS/Style1.css" rel="stylesheet" /> 
+}
+
+<h2>UpdateProduct</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+    <div class="container">
+       <div class="form-control" style="width:70%;">
+           <div class="form-group">
+               <b>Mã sản phẩm</b>
+                <div>
+                     @Html.TextBoxFor(model => model.MaSP, new { @class = "form-control", placeHolder = "Nhập mã sản phẩm"})
+                        @Html.ValidationMessageFor(model => model.MaSP)
+                    </div>
+        </div>
+               <div class="form-group">
+                    <b>Tên sản phẩm</b>
+                    <div class="editor-field">
+                        @Html.TextBoxFor(model => model.TenSP, new { @class = "form-control", placeHolder = "Nhập mã sản phẩm"})
+                        @Html.ValidationMessageFor(model => model.TenSP)
+                    </div>
+                </div>
+               <div class="form-group">
+                    <b>Giá bán</b>
+                    <div class="editor-field">
+                        @Html.EditorFor(model => model.GiaBan)
+                        @Html.ValidationMessageFor(model => model.GiaBan)
+                    </div>
+                </div>
+               <div class="form-group">
+                    <b>Giảm giá</b>
+                    <div class="editor-field">
+                        @Html.EditorFor(model => model.GiamGia)
+                        @Html.ValidationMessageFor(model => model.GiamGia)
+                    </div>
+                </div>
+               <div class="form-group">
+                    <b>Mô tả</b>
+                    <div class="editor-field">
+                        @Html.EditorFor(model => model.MoTa)
+                        @Html.ValidationMessageFor(model => model.MoTa)
+                    </div>
+                </div>
+               <div class="form-group">
+                    <b>Mã nhà cung cấp</b>
+                    <div class="editor-field">
+                           @Html.EditorFor(model => model.MaNCC)
+                        @Html.ValidationMessageFor(model => model.MaNCC)
+                    </div>
+                </div>
+               <div class="form-group">
+                    <b>Mã loại</b>
+                    <div class="editor-field">
+                        @Html.EditorFor(model => model.MaLoai)
+                        @Html.ValidationMessageFor(model => model.MaLoai)
+                    </div>
+                </div>
+                <div class="form-group">
+                    <b>Ảnh</b>
+                    <div class="editor-field">
+                        @Html.TextBoxFor(model => model.Anh,new {@class ="form-control", type="file"})
+                        @*<input id="File1" type="file" />*@
+                    </div>
+                </div>
+               <div class="form-group">
+                    <b>Size</b>
+                    <div class="editor-field">
+                        @Html.EditorFor(model => model.Size)
+                        @Html.ValidationMessageFor(model => model.Size)
+                    </div>
+                </div>
+        </div>
+    </div>
+
+        <p>
+            <input type="submit" value="Save" class="btn btn-success" />
+            @Html.ActionLink("Back to List", "ShowSanPham")
+        </p>
+}
+

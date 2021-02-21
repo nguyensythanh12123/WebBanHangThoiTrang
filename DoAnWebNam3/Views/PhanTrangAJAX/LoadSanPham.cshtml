@@ -1,0 +1,158 @@
+﻿@{
+    ViewBag.Title = "LoadSanPham";
+    Layout = "~/Views/Share/_LayoutAdmin.cshtml";
+    <link href="~/CSS/Style1.css" rel="stylesheet" />
+}
+@using DoAnWebNam3.Models;
+@model List<SanPham>
+
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal"
+        onclick="clearTextBox();">
+        Thêm Sản Phẩm Mới
+    </button>
+    <br />
+    <br />
+    <div class="modal" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Thêm mới </h4>
+                    <button type="button" id="iclose" class="close" data-dismiss="modal">x</button>
+                    <button type="button" id="iopen" class="close" data-toggle="modal" data-target="#myModal" style="display:none">Show</button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="Ma">Mã SP</label>
+                            <input type="text" class="form-control" id="MaSP" placeholder="Nhập Mã"  />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="name">Tên SP</label>
+                            <input type="text" class="form-control" id="TenSP" placeholder="Nhập Tên" />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="GiaBan">Giá Bán</label>
+                            <input type="text" class="form-control" id="GiaBan" placeholder="Nhập Giá Bán" />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="Giam">Giảm Giá</label>
+                            <input type="text" class="form-control" id="GiamGia" placeholder="Nhập Giá Sales" />
+                        </div>
+                        <div class="form-group">
+                            <label for="MoTa">Mô Tả</label>
+                            <input type="text" class="form-control" id="MoTa" placeholder="Nhập Mô Tả" />
+                        </div>
+                        <div class="form-group">
+                            <label for="MaNCC">Mã NCC</label>
+                            <input type="text" class="form-control" id="MaNCC" placeholder="Nhập Mã NCC" />
+                        </div>
+                        <div class="form-group">
+                            <label for="MaL">Mã Loại</label>
+                            <input type="text" class="form-control" id="MaLoai" placeholder="Nhập Mã Loại" />
+                        </div>
+                        <div class="form-group">
+                            <label for="Anh">Ảnh</label>
+                            <input type="file" class="form-control" id="Anh"  />
+                        </div>
+                        <div class="form-group">
+                            <label for="Anhct">Ảnh CT</label>
+                            <input type="file" class="form-control" id="AnhCT" />
+                        </div>
+                        <div class="form-group">
+                            <label for="Size">Size</label>
+                            <input type="text" class="form-control" id="Size" placeholder="Nhập Size" />
+                        </div>
+                    </form>
+                </div>
+                <div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" id="btnAdd" onclick="Add();">Add</button>
+                        <button type="button" class="btn btn-primary" id="btnUpdate" style="display: none;" onclick="Update();"> Update </button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<table class="table table-bordered" style="width:100%">
+    <tr>
+        <th>
+            Mã Sản Phẩm
+        </th>
+        <th width="10%" style="text-align:center">
+            Tên Sản Phẩm
+        </th>
+        <th style="text-align:center; width:8%">
+            Giá Bán
+        </th>
+        <th style="text-align:center; width:8%">
+            Giảm Giá
+        </th>
+        <th width="18%" style="text-align:center">
+            Mô Tả
+        </th>
+        <th style="text-align:center; width:14%" >
+            Mã Nhà Cung Cấp
+        </th>
+        <th style="text-align:center; width:7%">
+            Mã Loại
+        </th>
+        <th width ="12%" style="text-align:center">
+            Ảnh
+        </th>
+        <th style="text-align:center">
+            Size
+        </th>
+        <th style="text-align:center">
+            @Html.ActionLink("Delete All","Delete All", "Admin")
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.MaSP)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TenSP)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GiaBan)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GiamGia)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MoTa)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MaNCC)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MaLoai)
+        </td>
+        <td style="text-align:center">
+            @*@Html.DisplayFor(modelItem => item.Anh)*@
+            <img src="~/Image/@item.Anh" class="w-50 rounded" />
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Size)
+        </td>
+        <td>
+          @* @Ajax.ActionLink("Sửa","Update",new AjaxOptions{HttpMethod="Update"})*@
+
+            @*OnComplete="$('#row_+"+@item.MaSP+"').remove()"*@
+            @Ajax.ActionLink("Xóa","Delete",new {MaSP=@item.MaSP},new AjaxOptions{Confirm="Bạn Muốn Xóa Không?",OnComplete="$('#row_+"+@item.MaSP+"').remove()",HttpMethod="DELETE"})
+        </td>
+    </tr>
+}
+
+</table>
+   <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+    <link href="~/Content/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+<script src="~/Content/bootstrap/js/jquery-3.3.1.min.js"></script>
+<script src="~/Content/bootstrap/js/bootstrap.min.js"></script>
+    <script src="~/Content/bootstrap/js/SanPhamAjax.js"></script>

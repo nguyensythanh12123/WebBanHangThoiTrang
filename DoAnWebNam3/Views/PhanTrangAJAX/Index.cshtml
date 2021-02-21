@@ -1,0 +1,14 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Share/_LayoutAdmin.cshtml";
+    <link href="~/CSS/Style1.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+}
+
+<br />
+@Ajax.ActionLink("Load Sản Phẩm Theo AJAX", "LoadSanPham", new {@class="btn btn-primary" }, new AjaxOptions { HttpMethod = "GET", UpdateTargetId = "KetQua", InsertionMode = InsertionMode.InsertAfter })
+    <div id="KetQua" style="width:100%" class="container">
+        <h4>Đây là danh sách các sản phẩm thời trang</h4>
+        <br />
+    </div>
+

@@ -1,0 +1,40 @@
+﻿@{
+    ViewBag.Title = "ChiTietGiaoDich";
+    Layout = "~/Views/Share/LayOutChung.cshtml";
+}
+
+@using DoAnWebNam3.Models;
+@model List<HoaDon>
+
+<br />
+<br />
+<h4  class="container">Chi tiết giao dịch</h4>
+<table class="table container table-border-dark">
+    <tr>
+        <th>
+            Số Hóa Đơn
+        </th>
+        <th>
+            Ngày Đặt
+        </th>
+        <th>
+            Ghi Chú
+        </th>
+        <th>
+           
+        </th>
+    </tr>
+    @foreach(HoaDon item in Model)
+    {
+    <tr>
+        <td>@item.MaHD</td>
+        <td>@item.NgayLap</td>
+        <td>@item.GhiChu</td>
+        <td>
+          <a href="@Url.Action("ChitietHD", "DatHang", new {@mahd=item.MaHD })">Chi Tiết</a>
+        </td>
+    </tr>
+    }
+</table>
+<br />
+<br />

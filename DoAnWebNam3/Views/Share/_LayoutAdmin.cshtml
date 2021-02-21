@@ -1,0 +1,61 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>LayoutAdmin</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css" integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous"/>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js" integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link href="CSS/Style1.css" rel="stylesheet" />
+</head>
+<body>
+    <div id="main">
+        <div class="header-top">
+            <div class="logo">
+                <ul>
+                    <li><a href="@Url.Action("ShowSanPham","Admin")"><img src="~/Image/logo4.jpg" /></a></li>
+                    <li style="padding-top:54px;padding-right:100px;">
+                        <div class="container-1">
+                          <span class="icon"><i class="fa fa-search"></i></span>
+                          <input type="search" id="search" placeholder="Search..." />
+                      </div>
+                    </li> 
+                    <li style="padding-top:47px;">
+                        <a href="@Url.Action("DangXuatAdmin","KhachHang")"> 
+                                <i class="fa fa-sign-out fa-3x" title="Đăng Xuất"></i>                                          
+                        </a>
+                    </li>              
+                </ul>
+            </div> 
+            <nav class="site-header sticky-top py-1 bg-dark">
+      <div class="container d-flex flex-column flex-md-row justify-content-between">
+        <a class="py-2 d-none d-md-inline-block text-light" href="@Url.Action("ShowSanPham","Admin")">Trang Chủ</a>
+        <a class="py-2 d-none d-md-inline-block text-light" href="@Url.Action("ShowKhachHang","Admin")">Khách Hàng</a>
+        <a class="py-2 d-none d-md-inline-block text-light" href="@Url.Action("ShowHoaDon","Admin")">Hóa Đơn</a>
+        <a class="py-2 d-none d-md-inline-block text-light" href="@Url.Action("Index","PhanTrangAJAX")">Load SP AJAX</a>
+      </div>
+    </nav>    
+        </div>
+        <br />
+        <hr />
+        <div class="row">
+            <div class="col col-2">
+                <br />
+                <br />
+                @Html.Action("ShowLoaiSP", "Admin")      
+                 @Html.Action("ShowNCC", "Admin")            
+            </div>
+            <div class="col col-10">
+                @RenderBody()
+            </div>
+        </div>
+       </div>
+</body>
+</html>
+

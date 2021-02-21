@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DoAnWebNam3", "DoAnWebNam3\DoAnWebNam3.csproj", "{19A26EC7-D877-44CE-87D2-DDBFCDB5F205}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThoiTrangAPI", "ThoiTrangAPI\ThoiTrangAPI.csproj", "{D586D705-DEBD-4DA1-833A-D1975126573A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{19A26EC7-D877-44CE-87D2-DDBFCDB5F205}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{19A26EC7-D877-44CE-87D2-DDBFCDB5F205}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{19A26EC7-D877-44CE-87D2-DDBFCDB5F205}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{19A26EC7-D877-44CE-87D2-DDBFCDB5F205}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D586D705-DEBD-4DA1-833A-D1975126573A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D586D705-DEBD-4DA1-833A-D1975126573A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D586D705-DEBD-4DA1-833A-D1975126573A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D586D705-DEBD-4DA1-833A-D1975126573A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

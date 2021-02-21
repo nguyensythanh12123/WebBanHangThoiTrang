@@ -1,0 +1,19 @@
+﻿@using DoAnWebNam3.Models;
+@model GioHang
+
+@if (Model == null)
+{
+    <label> ( 0 ) </label>
+}
+else
+{
+    <label> ( @Model.soMatHang() ) </label>
+}
+
+@if(ViewBag.kh != null)
+{
+    KhachHang k = ViewBag.kh;
+    <b style="font-size:10px">Hi, @k.TenKH    
+        &nbsp; &nbsp; &nbsp;    
+    </b>
+}

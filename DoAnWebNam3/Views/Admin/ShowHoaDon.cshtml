@@ -1,0 +1,36 @@
+﻿@{
+    ViewBag.Title = "ShowHoaDon";
+    Layout = "~/Views/Share/_LayoutAdmin.cshtml";
+    <link href="~/CSS/Style1.css" rel="stylesheet" />
+}
+@using DoAnWebNam3.Models;
+@model List<HoaDon>
+
+<h2 class="container">Danh Sách Quản Lý Hóa Đơn</h2>
+<table class="table table-bordered" style="width:100%">
+    <tr>
+       <th>Mã HĐ</th>
+        <th>Mã Khách Hàng</th>
+        <th>Ngày Lập</th>
+        <th>Ghi Chú</th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.MaHD)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MaKH)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NgayLap)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GhiChu)
+        </td>
+    </tr>
+}
+
+</table>
+<h2>Tổng Doanh Thu Có được là:@ViewBag.tb</h2>

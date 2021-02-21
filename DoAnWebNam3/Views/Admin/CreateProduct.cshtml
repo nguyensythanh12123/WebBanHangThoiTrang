@@ -1,0 +1,103 @@
+﻿@model DoAnWebNam3.Models.SanPham
+
+@{
+    ViewBag.Title = "CreateProduct";
+    Layout = "~/Views/Share/_LayoutAdmin.cshtml";
+    <link href="~/CSS/Style1.css" rel="stylesheet" />
+}
+
+<h2>THÊM SẢN PHẨM MỚI</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+    <div class="container">
+    <div class="form-control" style="width:70%; float:left">
+        
+                    <div class="form-group">
+                        <b>Mã Sản Phẩm</b>
+                        @Html.TextBoxFor(model => model.MaSP, new { @class = "form-control", placeHolder = "Nhập mã sản phẩm"})
+                        @Html.ValidationMessageFor(model => model.MaSP, "", new {@class="text-danger" })
+                       @* <p class="help-block">Vui lòng nhập mã</p>*@
+                    </div>
+                    <br />          
+                    <div class="form-group">
+                        <b>Tên Sản Phẩm</b>
+                        @Html.TextBoxFor(model => model.TenSP, new { @class = "form-control", placeHolder = "Nhập tên sản phẩm"})
+                        @Html.ValidationMessageFor(model => model.TenSP, "", new {@class="text-danger" })
+@*                        <p class="help-block">Tên sản phẩm</p>*@
+                    </div>
+                    <br />
+                    <div class="form-group">
+                        <b>Giá Bán</b>
+                        @Html.TextBoxFor(model => model.GiaBan, new { @class = "form-control", placeHolder = "Nhập giá bán"})
+                        @Html.ValidationMessageFor(model => model.GiaBan, "", new {@class="text-danger" })
+                        @*<p class="help-block">Mã sản phẩm đã tồn tại</p>*@
+                    </div><br />
+
+                    <div class="form-group">
+                        <b>Giảm Giá</b>
+                        @Html.TextBoxFor(model => model.GiamGia, new { @class = "form-control", placeHolder = "Nhập giảm giá"})
+                        @Html.ValidationMessageFor(model => model.GiamGia, "", new {@class="text-danger" })
+                        @*<p class="help-block">Mã sản phẩm đã tồn tại</p>*@
+                    </div><br />
+
+                    <div class="form-group">
+                        <b>Mô Tả</b>
+                        @Html.TextAreaFor(model => model.MoTa, new { @class = "form-control", placeHolder = "Nhập mô tả sản phẩm"})
+                        @Html.ValidationMessageFor(model => model.MoTa, "", new {@class="text-danger" })
+                        @*<p class="help-block">Mã sản phẩm đã tồn tại</p>*@
+                    </div><br />
+
+                    <div class="form-group">
+                       <b>Mã Nhà Cung Cấp</b>
+                        @Html.DropDownListFor(model => model.MaNCC, null, "-Chọn Nhà Cung Cấp-", new {@class="form-control"})
+                        @Html.ValidationMessageFor(model => model.MaNCC, "", new {@class="text-danger" })
+                    </div><br />
+
+                   <div class="form-group">
+                       <b>Mã Loại</b>
+                        @Html.DropDownListFor(model => model.MaLoai, null, "-Chọn Loại-", new {@class="form-control"})
+                        @Html.ValidationMessageFor(model => model.MaLoai, "", new {@class="text-danger" })
+                    </div><br />
+
+                    <div class="form-group">
+                        <b>Ảnh</b>
+                        @*<input id="file1" type="file" />*@
+                        
+                        @Html.TextBoxFor(model => model.Anh, new {@class ="form-control", type="file"})
+                        @Html.ValidationMessageFor(model => model.Anh)
+                    </div><br />
+
+                   <div class="form-group">
+                        <b>Ảnh Chi Tiết</b>
+                        @Html.TextBoxFor(model => model.AnhCT, new {@class ="form-control", type="text"})
+                        @Html.ValidationMessageFor(model => model.AnhCT)
+                    </div><br />
+
+                    <div class="form-group">
+                        <b>Size</b>
+                        @Html.TextBoxFor(model => model.Size, new { @class = "form-control", placeHolder = "Nhập size"})
+                        @Html.ValidationMessageFor(model => model.Size, "", new {@class="text-danger" })
+                    </div><br />
+                   </div>  
+       <div class="trai" style="float:left;margin-left:10px; width:25%">
+<marquee width="100%" height="50%" behavior="scroll" bgcolor="gray" direction="up" scrolldelay="0.1">  
+    <img src="~/Image/v.jpg" style="width:100%" />
+    <img src="~/Image/v.jpg" style="width:100%" />
+
+        
+</marquee>
+           </div>
+        </div><br />
+             <div class="form-group">
+                            <input type="submit" value="Create" class="btn btn-success" style="margin-left:10px; float:left; width:34%;"/>
+                 <div style="text-decoration:none; float:left; margin-left:10px; width:34%">
+                    @Html.ActionLink("Back to List", "ShowSanPham", "Admin", new { @class = "btn btn-success w-100"})</div>
+                 
+             </div>
+   
+    
+}
+
+
+

@@ -1,0 +1,6 @@
+C:\Users\DELL\Desktop\Cong Nghe Web\DoAnWebNam3\ThoiTrangAPI\bin\Debug\ThoiTrangAPI.dll.config
+C:\Users\DELL\Desktop\Cong Nghe Web\DoAnWebNam3\ThoiTrangAPI\bin\Debug\ThoiTrangAPI.dll
+C:\Users\DELL\Desktop\Cong Nghe Web\DoAnWebNam3\ThoiTrangAPI\bin\Debug\ThoiTrangAPI.pdb
+C:\Users\DELL\Desktop\Cong Nghe Web\DoAnWebNam3\ThoiTrangAPI\obj\Debug\ThoiTrangAPI.csprojResolveAssemblyReference.cache
+C:\Users\DELL\Desktop\Cong Nghe Web\DoAnWebNam3\ThoiTrangAPI\obj\Debug\ThoiTrangAPI.dll
+C:\Users\DELL\Desktop\Cong Nghe Web\DoAnWebNam3\ThoiTrangAPI\obj\Debug\ThoiTrangAPI.pdb

@@ -1,0 +1,100 @@
+﻿@model ThoiTrangAPI.SanPham
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Share/_LayoutAdmin.cshtml";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>SanPham</legend>
+
+        @Html.HiddenFor(model => model.MaSP)
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.TenSP)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.TenSP)
+            @Html.ValidationMessageFor(model => model.TenSP)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.GiaBan)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.GiaBan)
+            @Html.ValidationMessageFor(model => model.GiaBan)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.GiamGia)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.GiamGia)
+            @Html.ValidationMessageFor(model => model.GiamGia)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.MoTa)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.MoTa)
+            @Html.ValidationMessageFor(model => model.MoTa)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.MaNCC)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.MaNCC)
+            @Html.ValidationMessageFor(model => model.MaNCC)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.MaLoai)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.MaLoai)
+            @Html.ValidationMessageFor(model => model.MaLoai)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Anh)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Anh)
+            @Html.ValidationMessageFor(model => model.Anh)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.AnhCT)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.AnhCT)
+            @Html.ValidationMessageFor(model => model.AnhCT)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Size)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Size)
+            @Html.ValidationMessageFor(model => model.Size)
+        </div>
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+
